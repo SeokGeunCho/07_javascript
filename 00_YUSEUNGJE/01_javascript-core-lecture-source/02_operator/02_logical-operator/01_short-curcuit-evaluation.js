@@ -2,8 +2,8 @@
 // 표현식을 평가하는 도중 평가 결과가 확정된 경우 나머지 평가 과정을 생략하는것
 // &&, || 연산자 표현식의 결과가 때로는 boolean값이 아닐 수도 있다.
 
-console.log('apple' || 'banana');
-console.log(false || 'banana') ;
+console.log("apple" || "banana");
+console.log(false || "banana");
 
 console.log(`apple` && `banana`);
 console.log(false && `banana`);
