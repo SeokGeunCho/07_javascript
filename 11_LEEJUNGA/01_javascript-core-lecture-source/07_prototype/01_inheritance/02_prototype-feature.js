@@ -14,11 +14,12 @@ const student = {
 student.id = "user01";
 console.log(student);
 // login 메소드 내의 this는 프로토타입의 영향을 받지 않으며 this는 언제나 .앞에 있는 객체를 의미한다.
-// student.login();
+student.login(); // user01님 로그인 되었습니다.
+user.login(); // user님 로그인 되었습니다.
 console.log("👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍👍");
 for (let key in student) {
   // for in 반복문은 상속 프로퍼티도 순회 대상에 포함시킨다.
-  //console.log(key);
+  console.log(key);
   let isOwn = student.hasOwnProperty(key);
   if (isOwn) {
     console.log(`객체 자신의 property : ${key}`);

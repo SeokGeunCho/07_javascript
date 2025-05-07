@@ -12,7 +12,7 @@ console.log(i);
 
 // 3. 변수 호이스팅
 // for문의 해당 블럭내에만 적용되기 때문
-console.log(x);
-let x;
+// console.log(x);
+// let x;
 
 

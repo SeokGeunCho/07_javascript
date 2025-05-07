@@ -15,6 +15,8 @@ const student = {
 
 student.name = "유관순"; // 객체의 프로퍼티값을 변경하는 것은 문제가 없다.
 student.test = "테스트";
+// 프로퍼티 추가는 안된다.
+// student.add = "add" 
 console.log(student);
 
 // 객체를 재할당 하는 것은 불가능하다.

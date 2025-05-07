@@ -24,3 +24,4 @@ console.log("--------->", obj[key]);
 obj[key] = { test: "새로운 객체 덮어쓰기!!!" };
 console.log(obj[key]);
 console.log(obj.__proto__);
+console.log(obj);

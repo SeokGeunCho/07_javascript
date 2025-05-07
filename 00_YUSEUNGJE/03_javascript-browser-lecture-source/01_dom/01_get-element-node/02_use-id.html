@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>id를 이용한 노드 취득</h1>
+    <div id="area1" class="area">
+      div 영역
+      <p id="area2">p 영역</p>
+    </div>
+    <div id="area1" class="area">div영역</div>
+
+    <script>
+      // 요소 노득 취득
+      const $elem = document.getElementById("area1");
+      console.log($elem);
+    </script>
+  </body>
+</html>
