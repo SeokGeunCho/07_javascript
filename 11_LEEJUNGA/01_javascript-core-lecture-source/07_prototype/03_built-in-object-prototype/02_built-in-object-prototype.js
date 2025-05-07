@@ -7,6 +7,7 @@ console.log(num);
 console.log(num.__proto__ === Number.prototype);
 // num은 Object.prototype을 상속 받았는가?
 console.log(num.__proto__.__proto__ === Object.prototype);
+console.log(num.__proto__.__proto__ === Number.prototype.__proto__);
 // Object.prototype의 [[Prototype]]은 null
 console.log(num.__proto__.__proto__.__proto__);
 

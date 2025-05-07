@@ -3,7 +3,7 @@ var student = {
     name: '유관순',
     age: 16,
     getinfo() {
-        retrun `${this.name}(은)는 ${this.age}세 입니다.`;
+        return `${this.name}(은)는 ${this.age}세 입니다.`;
     }
 };
 
@@ -12,6 +12,8 @@ for(var key in student) {
     console.log(`student.key : ${student.key}`);
     console.log(`==============================`);
     console.log(`student[key] : ${student[key]}`);
+    console.log(`student[key] : ${student[key]}`);
+    console.log(`\n`);
     
     
 }
