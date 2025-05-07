@@ -1,0 +1,22 @@
+// 나머지 매개변수(...)
+function merge(msg1, msg2) {
+  console.log(arguments);
+  return msg1 + msg2;
+}
+
+console.log(merge("안녕하세여"));
+console.log(merge("안녕하세요", "반갑습니다."));
+console.log(merge("안녕하세요", "반갑습니다.", "제 이름은 홍길동 입니다."));
+
+console.log("======================================================================");
+
+// 나머지 매개변수(...)를 활용해서 변경
+function mergeAll(...args) {
+  let msg = "";
+  for (let arg of args) msg += arg;
+  return msg;
+}
+
+console.log(mergeAll("안녕하세여"));
+console.log(mergeAll("안녕하세요", "반갑습니다."));
+console.log(mergeAll("안녕하세요", "반갑습니다.", "제 이름은 홍길동 입니다."));
