@@ -26,10 +26,12 @@ function Student(name, age) {
 }
 
 // 인스턴스의 생성
-const student3 = new Student("장보고", 35);
 console.log(student3);
 console.log(student3.getInfo());
 const student4 = new Student("신사임당", 40);
 console.log(student4);
 console.log(student4.getInfo());
+
+const student3 = new Student("장보고", 35);
+console.log(student3);
 

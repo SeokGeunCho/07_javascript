@@ -17,6 +17,7 @@ Student.prototype = user;
 // Function.prototype은 new Function()을 호출할 때만 사용되며
 // 이 때 만들어지는 객체의 [[Prototype]]을 할당한다.
 let student = new Student("홍길동");
+console.log(student);
 console.log(student.name); // 본인 프로퍼티
 console.log(student.activate); // 상속 프로퍼티
 student.login(); // 상속 프로퍼티
