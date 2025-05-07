@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="food">
+      <li>김치찌개</li>
+      <li>된장찌개</li>
+      <li>고등어구이</li>
+    </ul>
+    <ul id="drink">
+      <li>커피</li>
+      <li>콜라</li>
+      <li>우유</li>
+    </ul>
+
+    <script>
+      const $lists = document.getElementsByTagName("li");
+      console.log($lists);
+      console.log($lists.length);
+
+      $lists[0].style.background = "red";
+
+      let chanageColor = 0;
+      for (let i = 0; i < $lists.length; i++) {
+        $lists[i].style.background = "rgb(130, 200, " + chanageColor + ")";
+        chanageColor += 50;
+      }
+      [...$lists].forEach((list) => (list.style.color = "white"));
+
+      const $drink = document.getElementById("drink");
+      const $listFromDrink = $drink.getElementsByTagName("li");
+
+      console.log($listFromDrink);
+
+      [...$listFromDrink].forEach((list) => (list.style.color = "blue"));
+      const test = document.querySelectorAll("li");
+      test.forEach((list) => (list.style.color = "red"));
+
+      // $lists.forEach((list) => (list.style.color = "red"));  // 배열이 아니기 때문에 오류
+
+      // 방법 1. Array.from() 사용
+      Array.from($lists).forEach((list) => (list.style.color = "pink"));
+
+      // 방법2. 스프레드 문법 사용
+      [...$lists].forEach((list) => (list.style.color = "pink"));
+
+      const $noElem = document.getElementsByTagName("a");
+      console.log($noElem);
+    </script>
+  </body>
+</html>
