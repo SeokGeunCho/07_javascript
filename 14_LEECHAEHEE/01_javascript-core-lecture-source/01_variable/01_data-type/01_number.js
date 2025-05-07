@@ -1,4 +1,7 @@
-/* 숫자 타입 */
+// 한줄 주석
+/* 여러줄 주석*/
+
+/* 숫자타입 */
 var integer = 10;
 var double = 5.5;
 var negative = -10;

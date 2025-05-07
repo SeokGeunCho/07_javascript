@@ -9,13 +9,15 @@
     console.log(this);
   }
   test();
+
   new test();
 })();
 
 // 2. arguments 객체
-// 매개변수에 전달 된 인수를 재할당 하여 변경해도 arguments 객체에 반영되지 않는다.
-(function(x) {
+// 매개변수에 전달 된 인수를 재할당 하여 변경해도 arguments객체에 반영되지 않는다.
+(function (x) {
   "use strict";
   x = 2;
+
   console.log(arguments);
 })(1);

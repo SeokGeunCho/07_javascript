@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .white {
+        color: white;
+      }
+      .black {
+        color: black;
+      }
+
+      .blue {
+        color: blue;
+      }
+
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTMLCollection & NodeList</h1>
+
+    <h2>HTMLCollection</h2>
+    <ul>
+      <li class="white">착한 사람 눈에만 보이는 첫 번째 글</li>
+      <li class="white">착한 사람 눈에만 보이는 두 번째 글</li>
+      <li class="white">착한 사람 눈에만 보이는 세 번째 글</li>
+    </ul>
+    <script>
+      const $whiteList = document.getElementsByClassName("white");
+      console.log($whiteList);
+
+      // for (let i = 0; i < $whiteList.length; i++) {
+      //   $whiteList[i].className = "black";
+      // }
+
+      // for (let i = $whiteList.length - 1; i >= 0; i--) {
+      //   $whiteList[i].className = "black";
+      // }
+
+      // [...$whiteList].forEach((list) => (list.className = "blue"));
+      Array.from($whiteList).forEach((list) => (list.className = "blue"));
+    </script>
+
+    <h3>NodeList</h3>
+
+    <ul id="lists">
+      <li class="red">빨간 휴지 줄까~ 파란 휴지 줄까~</li>
+      <li class="red">빨간 휴지 줄까~ 파란 휴지 줄까~</li>
+      <li class="red">빨간 휴지 줄까~ 파란 휴지 줄까~</li>
+    </ul>
+    <script>
+      const $redList = document.querySelectorAll(".red");
+
+      for (let i = 0; i < $redList.length; i++) {
+        $redList[i].className = "black";
+      }
+      //$redList.forEach((list) => (list.className = "blue"));
+    </script>
+
+    <p>
+      대부분의 NodeList는 non-live 객체로 동작하지만
+      <b>childNodes</b> 프로퍼티가 반환하는 NodeList 객체는 HTMLCollection
+      객체와 같이 실시간으로 노드 객체의 상태 변경을 반영하는 live 객체로
+      동작하므로 주의가 필요하다.
+    </p>
+    <script>
+      const $lists = document.getElementById("lists");
+
+      const { childNodes } = $lists;
+      // const childNodes = $lists.childNodes;
+
+      console.log(childNodes);
+
+      for (let i = 0; i < childNodes.length; i++) {
+        $lists.removeChild(childNodes[i]);
+      }
+
+      console.log(childNodes); // 1, 3, 5, 7 요소만 삭제
+    </script>
+  </body>
+</html>
