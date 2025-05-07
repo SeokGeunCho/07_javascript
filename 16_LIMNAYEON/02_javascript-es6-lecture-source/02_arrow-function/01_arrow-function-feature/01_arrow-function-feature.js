@@ -5,16 +5,15 @@
 const theater = {
   store: "건대점",
   titles: ["어벤져스", "겨울왕국", "스파이더맨"],
-  showMovieList(){
+  showMovieList() {
     // 일반 함수
-    this.titles.forEach(function(title) {
+    this.titles.forEach(function (title) {
       console.log(this); // => 일반 함수의 this는 전역객체(global)를 가리킨다.
       console.log(`${this.store} : ${title}`);
-      
     });
 
     // 화살표 함수
-    this.titles.forEach(title => console.log(`${this.store} : ${title}`));
+    this.titles.forEach((title) => console.log(`${this.store} : ${title}`));
   },
 };
 
@@ -44,15 +43,15 @@ class Animal {
 }
 
 class Tiger extends Animal {
-  move(lostWeight){
+  move(lostWeight) {
     // 일반 함수 // SyntaxError: 'super' keyword unexpected here
     // setTimeout(function(){
     //   super.move(lostWeight);
     // }, 3000);
-    
-    // 화살표 함수 
+
+    // 화살표 함수
     setTimeout(() => {
-      super.move(lostWeight)
+      super.move(lostWeight);
     }, 3000);
   }
 }
@@ -61,7 +60,18 @@ let tiger = new Tiger("백두산 호랭이", 90);
 tiger.move(1);
 
 // 4. 화살표 함수는 arguments를 가지지 않는다.
-(function(){
-  console.log(argumentsX);
-  
+(function () {
+  console.log(arguments);
+
+  // 화살표 함수는 본인의 arguments 3, 4가 아닌 상위스코프의 argumetns 1, 2를 참조한다.
+  // const arrowFunc = () => console.log(arguments);
+
+  const arrowFunc = function () {
+    console.log("--->", arguments);
+  };
+  arrowFunc();
 })(1, 2); // 즉시실행 함수
+
+// 화살표 함수는 콜백 함수로 자주 사용되며, 자슨의 this/arguments를 가지지 않고
+// 상위 스코프를 그대로 참조하도록 설계되어 ES5 콜백 함수에서 자주 발생하던
+// this 바인딩 문제(전역 객체 or undefined를 가리킴)을 간편하게 해결할 수 있다.
