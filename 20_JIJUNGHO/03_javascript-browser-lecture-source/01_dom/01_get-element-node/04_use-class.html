@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>class 요소를 이용한 요소 노드 취득</h1>
+    <ul id="available">
+      <li class="drink coffee">커피</li>
+      <li class="drink coke">콜라</li>
+      <li class="drink milk">우유</li>
+    </ul>
+    <ul id="unavailable">
+      <li class="drink soju">소주</li>
+      <li class="drink beer">맥주</li>
+    </ul>
+
+    <script>
+      const $drinks = document.getElementsByClassName("drink");
+      console.log($drinks);
+
+      // Array.from($drinks).forEach((el) => (el.style.color = "red"));
+      [...$drinks].forEach((el) => (el.style.color = "#f00"));
+
+      const $coffee = document.getElementsByClassName("drink coffee");
+      console.log($coffee);
+
+      const $unavailable = document.getElementById("unavailable");
+      const $unavaiableDrinks = $unavailable.getElementsByClassName("drink");
+      console.log($unavaiableDrinks);
+
+      const $soju = $unavailable.getElementsByClassName("soju");
+      console.log($soju);
+
+      // id, class로 한번에 소주 찾기
+      const test = document.querySelectorAll("#unavailable > .soju");
+      console.log(test);
+    </script>
+  </body>
+</html>
