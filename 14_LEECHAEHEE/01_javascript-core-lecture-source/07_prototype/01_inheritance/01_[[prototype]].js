@@ -1,4 +1,4 @@
-// [[prototype]]
+// [[Prototype]]
 const user = {
   activate: true,
   login: function () {
@@ -10,8 +10,9 @@ const student = {
   passion: true,
 };
 
-student.__proto__ = user; // __proto__는 [[prototype]]의 getter/setter이다.
-// student의 프로토타입은 user이다. 또는 student는 user를 상속받는다고 표현한다.
+student.__proto__ = user; // __proto__는 [[Prototype]]의 getter, setter
+
+// student의 프로토타입은 user이다. 또는 student는 user를 상속받는다 라고 표현한다.
 console.log(student.passion);
 console.log(student.activate);
 student.login();
@@ -19,7 +20,7 @@ student.login();
 // 프로토타입 체인
 const ohgiraffersStudent = {
   class: 2,
-  __proto__: student,  
+  __proto__: student,
 };
 console.log(ohgiraffersStudent.class);
 console.log(ohgiraffersStudent.passion);

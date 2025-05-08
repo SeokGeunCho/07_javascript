@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ol id="node">
+      <li>
+        Node.prototype.childNodes : 자식 노드(요소 노드, 텍스트 노드)를 탐색하여
+        NodeList에 담아 반환
+      </li>
+      <li>
+        Node.prototype.firstChild : 첫 번째 자식 노드(요소 노드, 텍스트 노드)
+        반환
+      </li>
+      <li>
+        Node.prototype.lastChild : 마지막 자식 노드(요소 노드, 텍스트 노드) 반환
+      </li>
+    </ol>
+    <script>
+      const $node = document.getElementById("node");
+      // NodeList 반환, 요소 노드뿐만 아니라 텍스트 노드도 포함
+      console.log($node.childNodes);
+      // 첫 번째 자식 노드 탐색
+      console.log($node.firstChild);
+      // 마지막 자식 노드 탐색
+      console.log($node.lastChild);
+    </script>
+
+    <ol id="element">
+      <li>
+        Element.prototype.children : 자식 노드 중 요소 노드만 탐색하여
+        HTMLCollection에 담아 반환
+      </li>
+      <li>Element.prototype.firstElementChild : 첫 번째 자식 요소 노드 반환</li>
+      <li>Element.prototype.lastElementChild : 마지막 자식 요소 노드 반환</li>
+    </ol>
+
+    <script>
+      const $element = document.getElementById("element");
+      // HTMLCollection 반환, 요소 노드만 포함
+      console.log($element.children);
+      // 첫 번째 자식 요소 노드 탐색
+      console.log($element.firstElementChild);
+      // 마지막 자식 요소 노드 탐색
+      console.log($element.lastElementChild);
+    </script>
+  </body>
+</html>

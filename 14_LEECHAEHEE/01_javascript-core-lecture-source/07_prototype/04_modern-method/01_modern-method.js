@@ -3,24 +3,24 @@ const user = {
   activate: true,
 };
 
-// Object.create(proto) : [[ prototype ]]이 proto를 참조하는 빈객체를 만드는 메소드
+// Object.create(proto) : [[Prototype]]이 proto를 참조하는 빈객체를 만드는 메소드
 const student = Object.create(user);
 console.log(student.activate);
 
-// Object.getPrototypeOf(obj) : obj의 [[ prototype ]]을 반환
+// Object.getPrototypeOf(obj) : obj의 [[Prototype]] 반환
 console.log(Object.getPrototypeOf(student));
 console.log(Object.getPrototypeOf(student) === user);
 
-// Object.setPrototypeOf(obj, proto) : obj의 [[ prototype ]]을 proto로 설정
+// Object.setPrototypeOf(obj, proto) : obj의 [[Prototype]]을 proto가 되도록 설정
 Object.setPrototypeOf(student, {});
 console.log(Object.getPrototypeOf(student));
-console.log(Object.getPrototypeOf(student) === user); // false
+console.log(Object.getPrototypeOf(student) === user);
 
-// __proto__를 getter, setter로 직접 사용하면 키가 "__proto__:" 일 때 에러가 발생하는
-// 의도치 않은 상황이 생길수도 있으므로 메소드 사용을 권장한다.
+// __proto__를 getter, setter로 직접 사용하면 키가 "__proto__" 일 때 에러가 발생하는
+// 의도치 않은 상황이 생길 수도 있으므로 메소드 사용을 권장한다.
 const obj = Object.create(user);
 let key = "__proto__";
-console.log("------->", obj[key]);
-obj[key] = { "test: 새로운 객체 덮어쓰기!!!" };
+console.log("--------->", obj[key]);
+obj[key] = { test: "새로운 객체 덮어쓰기!!!" };
 console.log(obj[key]);
 console.log(obj.__proto__);
