@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>이벤트 객체</h1>
+    <p>이벤트 발생 시 이벤트에 관련된 다양한 정보를 가진 이벤트 객체가 동적으로 생성된다.</p>
+
+    <h1 class="message">아무 곳이나 클릭 ㄱ 클릭한 좌표 알려줌</h1>
+
+    <script>
+      document.onclick = showCoords;
+
+      function showCoords(evt) {
+        console.log("evt");
+        const $msg = document.querySelector(".message");
+        $msg.textContent = `clientX : ${evt.clientX}, clientY ${evt.clientY}`;
+      }
+    </script>
+
+    <div class="area" onclick="showDivCoords(event)">이 영역 내부를 클릭해보세요. 클릭한 좌표를 알려드려요</div>
+    <script>
+      const $area = document.querySelector(".area");
+
+      function showDivCoords(e) {
+        $area.textContent = `clientX : ${e.clientX}, clientY ${e.clientY}`;
+        console.log(e);
+      }
+      $area.style.background = "pink";
+      $area.style.width = "300px";
+      $area.style.height = "300px";
+    </script>
+  </body>
+</html>
