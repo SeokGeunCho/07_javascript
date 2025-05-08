@@ -1,0 +1,11 @@
+// 배열의 특정 조건을 충족하는 요소 찾기(find)
+const arr = [
+    {id: 0, name: '우림', age: 2},
+    {id: 1, name: '현아', age: 5},
+    {id: 2, name: '탄이', age: 30},
+    {id: 3, name: '현일', age: 3},
+    {id: 3, name: '혜림', age: 6}
+];
+
+const myFriend = arr.find(a => a.age === 30);
+console.log(myFriend);

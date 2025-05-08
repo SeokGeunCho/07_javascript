@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>동기 비동기</h1>
+    <script>
+      console.log("helloworld1");
+      console.log("helloworld2");
+      console.log("helloworld3");
+
+      function sayHello() {
+        console.log("hello world!");
+      }
+      // 작업이 순차적으로 진행되고 완료되어야 다음작업이 진행된다 > 동기
+      sayHello();
+      console.log("end 1");
+
+      // 작업이 순차적으로 진행되지 않고 완료되지 않아도 다음 작업이 진행된다. > 비동기
+      // setTimeout :비동기 함수
+      setTimeout(() => console.log("hi"), 3000);
+      console.log("end 2");
+    </script>
+  </body>
+</html>

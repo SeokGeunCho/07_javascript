@@ -8,7 +8,7 @@ console.log('string:', string);
 // 템플릿 리터럴: ESG부터 도입 된 멀티라인 문자열, 표현식 삽입
 var str = `안녕하세요
     반갑습니다.
-    제 이름은 홍길동 입니다.`;
+        제 이름은 홍길동 입니다.`;
 console.log(str);
 
 var lastName = '홍';
