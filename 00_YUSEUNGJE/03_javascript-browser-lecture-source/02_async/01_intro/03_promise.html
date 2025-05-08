@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 콜백 지옥과 같은 코드가 형성되지 않도록 ES6부터 Promise 객체가 추가 -->
+
+    <!-- Promise객체는 result값과 state상태값(Pending:대기, Fulfilled:성공, Rejected:실패) -->
+    <script>
+      function increase(number) {
+        // resolve :성공시 호출할 함수,
+        // reject :실패시 호출할 함수
+        const promise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const result = number + 10;
+            // 실패시에는 에러객체를 반환
+            if (result > 30) {
+              const e = new Error("NumberTooBig");
+              return reject(e);
+            }
+            // 성공시에는 연산된 결과를 반환
+            resolve(result);
+          }, 1000);
+        });
+
+        return promise;
+      }
+
+      console.log(increase(0)); // 정상적인 요청이 진행되서 fulfilled(성공)
+
+      // then(), catch(), finally()
+      increase(0)
+        .then((number) => {
+          // resolve함수로 반환한 값이 then메소드의 콜백의 매개변수로 전달
+          console.log(number);
+          return increase(number);
+        })
+        .then((number) => {
+          console.log(number);
+          return increase(number);
+        })
+        .then((number) => {
+          console.log(number);
+          return increase(number);
+        })
+        .catch((e) => {
+          // reject함수로 반환한 값이 catch콜백의 매개변수로 전달됨
+          console.log(e);
+        })
+        .finally(() => {
+          console.log("무조건실행");
+        });
+
+      const promise2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("test");
+        }, 1000);
+      });
+      console.log(promise2);
+    </script>
+  </body>
+</html>

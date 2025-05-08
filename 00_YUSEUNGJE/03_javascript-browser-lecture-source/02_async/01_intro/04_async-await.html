@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function increase(number) {
+        // resolve :성공시 호출할 함수,
+        // reject :실패시 호출할 함수
+        const promise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const result = number + 10;
+            // 실패시에는 에러객체를 반환
+            if (result > 30) {
+              const e = new Error("NumberTooBig");
+              return reject(e);
+            }
+            // 성공시에는 연산된 결과를 반환
+            resolve(result);
+          }, 1000);
+        });
+
+        return promise;
+      }
+
+      async function run() {
+        // Promise를 반환하는 함수 호출 시 앞에 await키워드를 작성
+        // await키워드는 반드시 async 함수 영역 내에서만 작성해야 하며
+        // 비동기 작업이 마치 동기 작업인 것 처럼 코드를 작성할 수있게 된다.
+        try {
+          let result = await increase(0);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+          result = await increase(result);
+          console.log(result);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+
+      run();
+    </script>
+  </body>
+</html>

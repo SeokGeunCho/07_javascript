@@ -58,8 +58,12 @@
       </div>
     </div>
     <script>
-      function test1(msg) {
+      function test1(msg, e) {
+        let event = e || window.event;
         alert(msg);
+        if (event.stopPropagation()) {
+          event.stopPropagation();
+        }
       }
     </script>
 
