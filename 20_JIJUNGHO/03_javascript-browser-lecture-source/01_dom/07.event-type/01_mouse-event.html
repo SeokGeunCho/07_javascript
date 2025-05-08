@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>마우스 관련 이벤트</h1>
+    <button>클릭해보세요</button>
+    <div class="area"></div>
+
+    <script>
+      const $btn = document.querySelector("button");
+      const $area = document.querySelector(".area");
+      // event.button
+      // 0 : 왼쪽, 1 : 가운데, 2 : 오른쪽
+
+      // 마우스 클릭 상태
+      $btn.onmousedown = (e) => {
+        $area.insertAdjacentHTML("beforeend", "mousedown button=" + e.button + "<br>");
+      };
+
+      // 마우스 클릭 후 뗀 상태
+      $btn.onmouseup = (e) => {
+        $area.insertAdjacentHTML("beforeend", "mouseup button=" + e.button + "<br>");
+      };
+
+      // 마우스가 올려진 상태
+      $btn.onmouseover = (e) => {
+        $area.insertAdjacentHTML("beforeend", "mouseover button=" + e.button + "<br>");
+      };
+
+      // 마우스가 내려간 상태
+      $btn.onmouseout = (e) => {
+        $area.insertAdjacentHTML("beforeend", "mouseout button=" + e.button + "<br>");
+      };
+
+      // 클릭
+      $btn.onclick = (e) => {
+        $area.insertAdjacentHTML("beforeend", "click button=" + e.button + "<br>");
+      };
+
+      // 더블 클릭
+      $btn.ondblclick = (e) => {
+        $area.insertAdjacentHTML("beforeend", "dblclick button=" + e.button + "<br>");
+      };
+
+      // 마우스 오른쪽 클릭
+      $btn.oncontextmenu = (e) => {
+        $area.insertAdjacentHTML("beforeend", "contextmenu button=" + e.button + "<br>");
+      };
+    </script>
+  </body>
+</html>
