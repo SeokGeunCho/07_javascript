@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>클릭해보세요</button>
+    <div class="area"></div>
+
+    <script>
+      const $btn = document.querySelector("button");
+      const $area = document.querySelector(".area");
+      // event.button
+      // 0 : 왼쪽, 1 : 가운데, 2 : 오른쪽
+      $btn.onmousedown = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "mousedown button=" + e.button + "<br>"
+        );
+      };
+      $btn.onmouseup = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "mouseup button=" + e.button + "<br>"
+        );
+      };
+      $btn.onmouseover = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "mouseover button=" + e.button + "<br>"
+        );
+      };
+      $btn.onmouseout = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "mouseout button=" + e.button + "<br>"
+        );
+      };
+      $btn.onclick = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "click button=" + e.button + "<br>"
+        );
+      };
+      $btn.ondblclick = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "dblclick button=" + e.button + "<br>"
+        );
+      };
+      $btn.oncontextmenu = (e) => {
+        $area.insertAdjacentHTML(
+          "beforeend",
+          "contextmenu button=" + e.button + "<br>"
+        );
+      };
+    </script>
+
+    <span>
+      이 영역은 드래그 해도, 또는 더블 클릭해도 선택 되지 않도록 합니다
+    </span>
+    <div id="div1">
+      이 편지는 영국에서 최초로 시작되어 일년에 한 바퀴 돌면서 받는 사람에게
+      행운을 주었고 지금은 당신에게로 옮겨진 이 편지는 4일 안에 당신 곁을 떠나야
+      합니다. 이 편지를 포함해서 7통을 행운이 필요한 사람에게 보내 주셔야
+      합니다. 복사는 안됩니다.
+    </div>
+
+    <script>
+      const $span = document.querySelector("span");
+      $span.onmousedown = (e) => e.preventDefault();
+      $span.onmousemove = (e) => e.preventDefault();
+      const $div = document.querySelector("#div1");
+      $div.oncopy = () => {
+        alert("복사 불가능입니다!");
+        return false;
+      };
+    </script>
+  </body>
+</html>
