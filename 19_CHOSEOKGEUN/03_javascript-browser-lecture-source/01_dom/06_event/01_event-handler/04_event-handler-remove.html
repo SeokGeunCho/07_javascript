@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <!-- 이건 웹페이지가 어떤 글자(문자)를 사용할지 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 이건 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>이벤트 핸들러 제거</title> <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>이벤트 핸들러 제거</h1> <!-- 큰 제목이에요 -->
+    <p>
+      EventTarget.prototype.removeEventListener : addEventListener 메소드로
+      등록한 이벤트 핸들러를 제거하는 함수
+      <!-- 이건 버튼을 눌렀을 때 일어나는 일을 없애주는 방법에 대한 설명이에요 -->
+    </p>
+    <button id="btn">클릭해보세요</button> <!-- 이 버튼을 누르면 뭔가 일어날 거예요 -->
+    <button id="btn2">더블 클릭해보세요</button> <!-- 이 버튼은 두 번 빠르게 눌러야 작동해요 -->
+
+    <script>
+      // 첫 번째 버튼: 클릭 이벤트
+      const $btn = document.querySelector("#btn"); // "#btn"이라는 이름의 버튼을 찾아서 $btn에 저장해요
+      const handleClick = () => alert("클릭했데요~"); // 버튼을 누르면 "클릭했데요~"라는 메시지를 보여줘요
+      $btn.addEventListener("click", handleClick); // 버튼을 클릭하면 handleClick 함수를 실행해요
+      // $btn.removeEventListener("click", handleClick); // 이 줄은 버튼 클릭 기능을 없애는 코드예요. 지금은 주석 처리해서 기능이 살아있어요
+
+      // 마우스를 버튼 위에 올리면 메시지가 나타나요
+      $btn.addEventListener("mouseover", () => alert("마우스 올림")); // 마우스를 버튼 위에 올리면 "마우스 올림" 메시지를 보여줘요
+
+      // 두 번째 버튼: 더블 클릭 이벤트
+      const $btn2 = document.querySelector("#btn2"); // "#btn2"라는 이름의 버튼을 찾아서 $btn2에 저장해요
+      const handleDoubleClick = () => alert("더블클릭 했데요~"); // 두 번 빠르게 누르면 "더블클릭 했데요~" 메시지를 보여줘요
+      $btn2.addEventListener("dblclick", handleDoubleClick); // 버튼을 두 번 빠르게 클릭하면 handleDoubleClick 함수를 실행해요
+
+      // 추가된 코드: ondblclick로 이벤트 설정
+      $btn2.ondblclick = handleClick; // 더블 클릭하면 "클릭했데요~" 메시지를 보여줘요
+      // 아래 줄은 오타("dbclick")가 있어서 작동 안 했어요. 그리고 ondblclick로 설정한 건 removeEventListener로 못 지워요
+      // $btn2.removeEventListener("dblclick", handleClick); // 주석 처리했어요
+      $btn2.ondblclick = null; // ondblclick로 설정한 "클릭했데요~" 기능을 지워요. 이제 더블 클릭하면 handleDoubleClick만 작동해요
+    </script>
+  </body>
+</html>

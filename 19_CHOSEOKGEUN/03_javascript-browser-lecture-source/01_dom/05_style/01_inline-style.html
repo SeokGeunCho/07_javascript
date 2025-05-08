@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>Document</title> <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>inline style</h1> <!-- 큰 제목이에요 -->
+    <p>
+      HTMLElement.prototype.style 프로퍼티는 setter와 getter가 모두 존재하는 접근자 프로퍼티로 요소 노드의 인라인 스타일을 취득하거나 추가 또는 변경한다.
+      <!-- 이건 웹페이지의 그림이나 색을 바꾸는 방법을 설명해요 -->
+    </p>
+    <div style="color: white">DIV AREA</div> <!-- 이 상자는 흰색 글씨로 "DIV AREA"라고 써져 있어요 -->
+
+    <script>
+      const $area = document.querySelector("div"); // 웹페이지에서 <div>라는 상자를 찾아서 $area에 저장해요
+      console.log($area.style); // 상자의 스타일(색, 크기 등)을 개발자 도구에 보여줘요
+      console.log($area.style.color); // 상자의 글씨 색깔(흰색)을 개발자 도구에 보여줘요
+
+      $area.style.width = "100px"; // 상자의 가로 크기를 100픽셀로 만들어요
+      $area.style.height = "100px"; // 상자의 세로 크기를 100픽셀로 만들어요
+      $area.style.backgroundColor = "lightgray"; // 상자의 배경 색을 연한 회색으로 바꿔요
+      $area.style["background-color"] = "red"; // 배경 색을 빨간색으로 바꿔요. 위 회색은 덮어써져요
+
+      $area.innerHTML = "<s>DIV AREA</s>"; // 상자 안의 글씨를 "DIV AREA"로 바꾸고, 취소선(<s>)을 추가해요
+    </script>
+  </body>
+</html>

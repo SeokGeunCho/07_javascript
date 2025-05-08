@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>Document</title> <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>Attribute</h1> <!-- 큰 제목이에요 -->
+    <p>
+      Element.prototype.attributes 프로퍼티로 모든 어트리뷰트 노드를 취득할 수 있다. attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로퍼티로 NameNodeMap 객체를 반환한다.
+      <!-- 이건 입력칸의 모든 속성(정보)을 볼 수 있는 방법을 설명해요 -->
+    </p>
+    <label for="username">유저명</label> <!-- "유저명"이라는 글씨를 입력칸 옆에 보여줘요 -->
+    <input type="text" id="username" value="user01" test="123" /> <!-- 텍스트를 입력할 수 있는 칸이에요. 기본값은 "user01"이에요 -->
+
+    <script>
+      const attributes = document.getElementById("username").attributes; // 입력칸의 모든 속성(정보)을 가져와요
+      console.log(attributes); // 개발자 도구에 입력칸의 속성 목록을 보여줘요
+      console.log(attributes.type.value); // 입력칸의 "type" 속성 값("text")을 보여줘요
+      console.log(attributes.id.value); // 입력칸의 "id" 속성 값("username")을 보여줘요
+      console.log(attributes.value.value); // 입력칸의 "value" 속성 값("user01")을 보여줘요
+    </script>
+
+    <p>
+      Element.prototype.getAttribute/setAttribute 메서드를 사용하면 attributes 프로퍼티를 통하지 않고 요소 노드에서 메서드를 통해 직접 HTML 어트리뷰트 값을 취득하거나 변경할 수 있어 편리 하다.
+      <!-- 이건 입력칸의 속성을 더 쉽게 확인하거나 바꾸는 방법을 설명해요 -->
+    </p>
+    <script>
+      const $input = document.querySelector("#username"); // "#username"이라는 이름의 입력칸을 찾아서 $input에 저장해요
+      const inputValue = $input.getAttribute("value"); // 입력칸의 "value" 속성 값을 가져와요
+      console.log(">>>> ", inputValue); // 개발자 도구에 ">>>> user01"을 보여줘요
+      $input.setAttribute("value", "user01"); // 입력칸의 "value" 속성 값을 "user01"로 바꿔요
+    </script>
+
+    <p>
+      Element.prototype.hasAttribute(attributeName) 메서드를 사용하면 특정 HTML 어트리뷰트가 존재하는지 확인할 수 있다. Element.prototype.removeAttribute(attributeName) 메서드를 사용하면 특정 HTML 어트리뷰트를 삭제할 수 있다.
+      <!-- 이건 입력칸에 특정 속성이 있는지 확인하거나 속성을 지우는 방법을 설명해요 -->
+    </p>
+    <script>
+      console.log($input.hasAttribute("type")); // "type" 속성이 있는지 확인해요(있으니까 true)
+      console.log($input.hasAttribute("name")); // "name" 속성이 있는지 확인해요(없으니까 false)
+      if ($input.hasAttribute("test")) $input.removeAttribute("test"); // "test" 속성이 있으면 지워요
+      console.log($input.attributes); // 속성 목록을 다시 보여줘요. "test" 속성이 지워졌을 거예요
+    </script>
+  </body>
+</html>

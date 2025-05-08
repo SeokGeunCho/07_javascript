@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>Document</title> <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <style>
+    .area {
+      width: 100px; /* 상자의 가로 크기를 100픽셀로 만들어요 */
+      height: 100px; /* 상자의 세로 크기를 100픽셀로 만들어요 */
+      border: 1px solid black; /* 상자 주위에 검은색 1픽셀 테두리를 그려요 */
+    }
+    .circle {
+      border-radius: 50%; /* 상자를 동그랗게 만들어요 */
+    }
+    .lightgray {
+      background: lightgray; /* 상자의 배경을 연한 회색으로 채워요 */
+    }
+    .yellow {
+      background: yellow; /* 상자의 배경을 노란색으로 채워요 */
+    }
+  </style>
+  <body>
+    <h1>className and classList</h1> <!-- 큰 제목이에요 -->
+    <p>
+      class 어트리뷰트에 대응하는 DOM 프로퍼티는 class가 아니라 classNmae 과 classList이다.
+      <!-- 이건 상자에 스타일(모양)을 추가하거나 확인하는 방법을 설명해요 -->
+    </p>
+    <div class="area"></div> <!-- 이 상자는 "area"라는 스타일을 가져서 100x100픽셀 크기에 검은 테두리가 있어요 -->
+
+    <script>
+      const $area = document.querySelector(".area"); // ".area"라는 이름을 가진 상자를 찾아서 $area에 저장해요
+      console.log($area.className); // 상자의 스타일 이름("area")을 개발자 도구에 보여줘요
+      console.log($area.classList); // 상자의 스타일 이름 목록을 개발자 도구에 보여줘요
+    </script>
+  </body>
+</html>

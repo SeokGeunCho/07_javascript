@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>Document</title>
+    <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <!-- 콜백 지옥과 같은 코드가 형성되지 않도록 ES6부터 Promise 객체가 추가 -->
+    <!-- Promise는 일이 잘 끝났는지, 실패했는지 알려주는 약속이에요 -->
+
+    <script>
+      function increase(number) {
+        // 숫자를 10 더해주는 함수예요. 약속(Promise)을 만들어서 결과를 알려줘요
+        const promise = new Promise((resolve, reject) => {
+          // Promise는 약속을 만들어요. resolve는 성공, reject는 실패를 뜻해요
+          setTimeout(() => {
+            // 1초 기다린 후에 실행돼요
+            const result = number + 10; // 숫자에 10을 더해요
+            if (result > 30) {
+              // 결과가 30보다 크면 실패예요
+              const e = new Error("NumberTooBig"); // "너무 커!"라는 오류를 만들어요
+              return reject(e); // 실패했다고 알려줘요
+            }
+            resolve(result); // 성공했으면 결과를 보내요
+          }, 1000); // 1초 기다려요
+        });
+        return promise; // 약속을 돌려줘요
+      }
+
+      // increase(0)을 시작해서 숫자를 계속 더해요
+      increase(0)
+        .then((number) => {
+          // 성공하면 이 코드가 실행돼요. number는 결과값이에요
+          console.log(number); // 결과를 보여줘요 (0 + 10 = 10)
+          return increase(number); // 다시 10을 더하도록 약속을 이어가요
+        })
+        .then((number) => {
+          console.log(number); // 다음 결과 (10 + 10 = 20)
+          return increase(number); // 또 10을 더해요
+        })
+        .then((number) => {
+          console.log(number); // 다음 결과 (20 + 10 = 30)
+          return increase(number); // 또 10을 더하려고 하지만...
+        })
+        .catch((e) => {
+          // 실패하면 이 코드가 실행돼요. e는 오류 메시지예요
+          console.log(e); // "NumberTooBig" 오류를 보여줘요 (30 + 10 = 40은 너무 커요)
+        })
+        .finally(() => {
+          // 성공이든 실패든 마지막에 이 코드가 실행돼요
+          console.log("무조건 실행"); // "무조건 실행"을 보여줘요
+        });
+
+      console.log(increase(0)); // 약속(Promise)이 시작된 걸 보여줘요. 아직 기다리는 중(Pending)
+
+      const promise2 = new Promise((resolve, reject) => {
+        // 또 다른 약속을 만들어요
+        setTimeout(() => {
+          console.log("test"); // 1초 후에 "test"를 보여줘요
+          // resolve나 reject를 안 불러서 약속이 끝나지 않아요
+        }, 1000);
+      });
+      console.log(promise2); // 이 약속도 아직 기다리는 중(Pending)이에요
+    </script>
+  </body>
+</html>

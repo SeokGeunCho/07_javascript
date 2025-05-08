@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>Document</title>
+    <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>이벤트 핸들러 내부의 this</h1>
+    <!-- 큰 제목이에요 -->
+    <p>
+      어트리뷰트 방식의 경우 이벤트 핸들러에 의해 일반 함수로 호출되고 일반 함수
+      내부의 this는 전역 객체 window를 가리킨다. 이벤트 핸들러 호출 시 인수로
+      전달한 this는 이벤트를 바인딩한 DOM요소를 가리킨다.
+      <!-- 이건 버튼을 눌렀을 때 "this"가 무엇을 가리키는지 설명해요 -->
+    </p>
+    <button onclick="handleClick()">클릭해보세요</button>
+    <!-- 이 버튼을 누르면 handleClick 함수가 실행돼요 -->
+    <button onclick="handleClick2(this)">클릭해보세요</button>
+    <!-- 이 버튼을 누르면 버튼 자신을 handleClick2에 보내요 -->
+
+    <script>
+      function handleClick() {
+        console.log(this); // 이건 전체 웹페이지(window)를 보여줘요
+      }
+      function handleClick2(param) {
+        console.log(param); // 이건 버튼 자신을 보여줘요
+      }
+    </script>
+
+    <p>
+      이벤트 핸들러 프로퍼티 방식과 addEventListener 방식 모두 이벤트 핸들러
+      내부의 this는 이벤트를 바인딩한 DOM요소를 가리킨다.
+      <!-- 이건 다른 방식으로 버튼을 눌렀을 때 "this"가 버튼을 가리킨다고 설명해요 -->
+    </p>
+    <button id="btn1">클릭해보세요</button>
+    <!-- 이 버튼은 onclick 방식으로 설정해요 -->
+    <button id="btn2">클릭해보세요</button>
+    <!-- 이 버튼은 addEventListener 방식으로 설정해요 -->
+
+    <script>
+      const $btn1 = document.querySelector("#btn1"); // "#btn1" 버튼을 찾아요
+      const $btn2 = document.querySelector("#btn2"); // "#btn2" 버튼을 찾아요
+
+      $btn1.onclick = function (e) {
+        console.log(this); // 이건 버튼 자신(btn1)을 보여줘요
+        console.log(e.currentTarget); // 이건 똑같이 버튼 자신(btn1)을 보여줘요
+      };
+      $btn2.addEventListener("click", function (e) {
+        console.log(this); // 이건 버튼 자신(btn2)을 보여줘요
+        console.log(e.currentTarget); // 이건 똑같이 버튼 자신(btn2)을 보여줘요
+      });
+    </script>
+
+    <p>
+      화살표 함수로 정의한 이벤트 핸들러 내부의 this는 상위 스코프의 this를
+      가리킨다. 화살표 함수 자체의 this바인딩을 가지지 않는다는 점에 유의한다.
+      <!-- 이건 화살표 함수에서 "this"가 다르게 작동한다고 설명해요 -->
+    </p>
+    <button id="btn3">클릭해보세요</button>
+    <!-- 이 버튼은 화살표 함수로 onclick 설정해요 -->
+    <button id="btn4">클릭해보세요</button>
+    <!-- 이 버튼은 화살표 함수로 addEventListener 설정해요 -->
+
+    <script>
+      const $btn3 = document.querySelector("#btn3"); // "#btn3" 버튼을 찾아요
+      const $btn4 = document.querySelector("#btn4"); // "#btn4" 버튼을 찾아요
+
+      $btn3.onclick = (e) => {
+        console.log(this); // 이건 전체 웹페이지(window)를 보여줘요
+        console.log(e.currentTarget); // 이건 버튼 자신(btn3)을 보여줘요
+      };
+      $btn4.addEventListener("click", (e) => {
+        console.log(this); // 이건 전체 웹페이지(window)를 보여줘요
+        console.log(e.currentTarget); // 이건 버튼 자신(btn4)을 보여줘요
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>data attribute & dataset property</h1>
+    <p></p>
+    <p>data attribute: HTML에 정의한 사용자 정의 어트리뷰트</p>
+    <p>dataset property : 자바스크립트 코드로 접근할 때의 방법</p>
+
+    <ul class="boardlist">
+      <li data-board-id="13" data-category-id="1">
+        망원 맛집 추천 부탁드려요!
+      </li>
+      <li data-board-id="15" data-category-id="2">한강 러닝 크루 구해요!</li>
+      <li data-board-id="18" data-category-id="3">
+        요즘 재태크 어떻게 하시나요?
+      </li>
+    </ul>
+
+    <script>
+      // boardlist 클래스 요소 안의 자식 li 요소들을 배열로 변환
+      const boardlist = Array.from(
+        document.querySelector(".boardlist").children
+      );
+
+      // 각 board의 dataset 속성 출력
+      boardlist.forEach((board) => console.log(board.dataset));
+
+      // boardId가 "13"인 요소 찾기
+      const board = boardlist.find((board) => board.dataset.boardId === "13");
+      console.log(board);
+
+      // 해당 요소의 categoryId 변경
+      board.dataset.categoryId = "4";
+      board.dataset.boardWriter = "JS 사랑해";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <style>
+      ul {
+        background: lightgray; /* 목록 전체의 배경을 연한 회색으로 만들어요 */
+      }
+      li {
+        background: lightblue; /* 목록 안의 각 항목을 연한 파란색으로 만들어요 */
+      }
+      .div-test {
+        border: 1px solid black; /* 상자 주위에 검은색 1픽셀 테두리를 그려요 */
+        padding: 20px; /* 상자 안쪽에 20픽셀 여백을 추가해요 */
+      }
+      .div1 {
+        background: red; /* 첫 번째 상자를 빨간색으로 만들어요 */
+      }
+      .div2 {
+        background: orange; /* 두 번째 상자를 주황색으로 만들어요 */
+      }
+      .div3 {
+        background: yellow; /* 세 번째 상자를 노란색으로 만들어요 */
+      }
+      .div4 {
+        background: green; /* 네 번째 상자를 초록색으로 만들어요 */
+      }
+    </style>
+    <title>Document</title>
+    <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>이벤트 전파</h1>
+    <!-- 큰 제목이에요 -->
+    <ul id="drink">
+      <li>커피</li>
+      <!-- 목록 항목: 커피 -->
+      <li>콜라</li>
+      <!-- 목록 항목: 콜라 -->
+      <li>우유</li>
+      <!-- 목록 항목: 우유 -->
+    </ul>
+
+    <script>
+      const $drink = document.getElementById("drink"); // "drink"라는 목록을 찾아요
+      $drink.addEventListener("click", (e) => {
+        // 목록이나 항목을 클릭하면 이 코드가 실행돼요
+        console.log(e.eventPhase); // 클릭이 어떤 단계인지 숫자로 보여줘요 (2: 클릭한 곳, 3: 위로 퍼짐)
+        console.log(e.target); // 실제로 클릭한 곳(목록이나 항목)을 보여줘요
+        console.log(e.currentTarget); // 이 이벤트가 설정된 곳(목록 전체)을 보여줘요
+      });
+    </script>
+
+    <div onclick="test1('1번 div')" class="div-test div1">
+      <!-- 빨간 상자, 클릭하면 "1번 div" 메시지 -->
+      <div onclick="test1('2번 div')" class="div-test div2">
+        <!-- 주황 상자, 클릭하면 "2번 div" 메시지 -->
+        <div onclick="test1('3번 div')" class="div-test div3">
+          <!-- 노란 상자, 클릭하면 "3번 div" 메시지 -->
+          <div onclick="test1('4번 div')" class="div-test div4">
+            <!-- 초록 상자, 클릭하면 "4번 div" 메시지 -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function test1(msg) {
+        alert(msg); // 메시지를 팝업으로 보여줘요
+      }
+    </script>
+    <pre>
+      이벤트 핸들러 어트리뷰트/프로퍼티 방식으로 등록한 이벤트 핸들러는 타깃 단계와 버블링 단계의
+이벤트만 캐치할 수 있지만 addEventListener 메서드 방식으로 등록한 이벤트 핸들러는 3번째 인
+수로 true를 전달하면 캡처링 단계의 이벤트도 캐치할 수 있다.
+
+    </pre>
+    <ul id="food">
+      <li>김치찌개</li>
+      <li>된장찌개</li>
+      <li>고등어구이</li>
+    </ul>
+    <script>
+      const $food = document.getElementById("food");
+      // 버블링 단계 캐치
+      $food.addEventListener("click", (e) => {
+        console.log(e.eventPhase);
+        console.log(e.target);
+        console.log(e.currentTarget);
+      });
+      // 캡처링 단계 캐치
+      $food.addEventListener(
+        "click",
+        (e) => {
+          console.log(e.eventPhase);
+          console.log(e.target);
+          console.log(e.currentTarget);
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

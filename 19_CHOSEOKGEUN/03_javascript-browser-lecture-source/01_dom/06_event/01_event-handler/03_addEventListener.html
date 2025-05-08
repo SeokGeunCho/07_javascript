@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 화면 크기에 맞춰 웹페이지가 잘 보이게 해줘요 -->
+    <title>addEventListener</title>
+    <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>addEventListener</h1>
+    <!-- 큰 제목이에요 -->
+    <p>
+      EventTarget.prototype.addEventListener('eventType', functionName [,
+      useCapture]) : 첫 번째 매개변수는 이벤트 타입 명칭, 두 번째 매개변수는
+      이벤트 핸들러 함수, 세 번째 매개변수는 이벤트 전파 단계(캡쳐링 or
+      버블링)를 지정한다.
+      <!-- 이건 버튼을 누르거나 마우스를 올릴 때 어떤 일이 일어날지 정하는 방법에 대한 설명이에요 -->
+    </p>
+
+    <button id="btn">클릭해보세요</button>
+    <!-- 이 버튼을 누르면 뭔가 일어날 거예요 -->
+
+    <script>
+      const $btn = document.querySelector("#btn"); // "#btn"이라는 이름의 버튼을 찾아서 $btn에 저장해요
+
+      // 버튼을 클릭하면 이 일이 일어나요
+      $btn.addEventListener("click", function () {
+        alert("클릭했네?"); // 버튼을 누르면 "클릭했네?"라는 메시지가 팝업으로 나타나요
+      });
+
+      // 같은 버튼을 클릭하면 이 일도 일어나요. addEventListener는 여러 가지 일을 한 번에 설정할 수 있어요!
+      $btn.addEventListener("click", () => {
+        console.log("클릭했어~"); // 버튼을 누르면 개발자 도구에 "클릭했어~"가 써져요
+      });
+
+      // 마우스를 버튼 위에 올리면 이 일이 일어나요
+      const handerMouseover = () => console.log(`button mouseover!!!`); // 마우스를 올리면 "button mouseover!!!"가 개발자 도구에 써져요
+      $btn.addEventListener("mouseover", handerMouseover); // 마우스를 버튼 위에 올리면 handerMouseover 함수가 실행돼요
+
+      // 같은 함수를 두 번 등록해도 한 번만 작동해요. 중복은 안 돼요!
+    </script>
+  </body>
+</html>

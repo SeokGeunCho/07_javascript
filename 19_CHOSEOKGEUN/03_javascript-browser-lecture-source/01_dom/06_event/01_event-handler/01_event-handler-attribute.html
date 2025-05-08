@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /> <!-- 웹페이지에서 사용할 글자(문자)를 정해줘요 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 화면 크기에 맞춰 웹페이지가 예쁘게 보여요 -->
+    <title>event handler attribute</title> <!-- 웹페이지 제목이에요. 브라우저 위에 보여요 -->
+  </head>
+  <body>
+    <h1>이벤트 핸들러 어트리뷰트</h1> <!-- 큰 제목이에요 -->
+    <p>
+      HTML 이벤트 핸들러 어트리뷰트 (on 접두사 + 이벤트 타입) 값으로 함수 호출문을 할당하여 이벤트 핸들러를 등록하는 방식이다.
+      <!-- 이건 버튼을 누르거나 마우스를 올리면 일어나는 일을 버튼에 직접 적는 방법에 대한 설명이에요 -->
+    </p>
+    <button onclick="alert('클릭했네?');console.log('클릭했네?');">
+      클릭해보세요
+    </button> <!-- 이 버튼을 누르면 "클릭했네?" 메시지가 나타나고, 개발자 도구에 메시지가 써져요 -->
+    <button onmouseover="hello('홍길동')">마우스를 올려보세요.</button> <!-- 마우스를 이 버튼 위에 올리면 "홍길동씨 환영해요~" 메시지가 나타나요 -->
+
+    <script>
+      function hello(name) {
+        alert(`${name}씨 환영해요~`); // 이름을 받아서 "OOO씨 환영해요~"라는 메시지를 보여줘요
+      }
+    </script>
+  </body>
+</html>

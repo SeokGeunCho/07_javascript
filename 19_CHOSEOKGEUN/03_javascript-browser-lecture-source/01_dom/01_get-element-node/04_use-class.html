@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>class를 이용한 요소 노드 취득</h1>
+    <ul id="available">
+      <li class="drink coffee">커피</li>
+      <li class="drink coke">콜라</li>
+      <li class="drink milk">우유</li>
+    </ul>
+    <ul id="unavailable">
+      <li class="drink soju">소주</li>
+      <li class="drink beer">맥주</li>
+    </ul>
+
+    <script>
+      // 1. 모든 drink 클래스 요소 가져오기
+      const $drinks = document.getElementsByClassName("drink");
+      console.log($drinks);
+
+      // 2. 모든 drink 요소 글자 색 변경
+      [...$drinks].forEach((drink) => (drink.style.color = "pink"));
+
+      // 3. 클래스가 'drink coffee'인 요소 가져오기
+      const $coffee = document.getElementsByClassName("drink coffee");
+      console.log($coffee);
+
+      // 4. 'unavailable' 리스트에서만 drink 요소 가져오기
+      const $unavailable = document.getElementById("unavailable");
+      const $unavailableDrinks = $unavailable.getElementsByClassName("drink");
+      console.log($unavailableDrinks);
+
+      // 5. 'soju' 클래스만 가져오기
+      const $soju = $unavailable.getElementsByClassName("soju");
+      console.log($soju);
+
+      const test = document.querySelectorAll("#unavailable>.soju");
+      console.log("test >>>", test);
+    </script>
+  </body>
+</html>
