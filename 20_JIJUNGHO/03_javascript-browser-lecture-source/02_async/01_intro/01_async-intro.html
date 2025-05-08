@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>동기 / 비동기</h1>
+    <script>
+      console.log("hello world 1");
+      console.log("hello world 2");
+      console.log("hello world 3");
+
+      function sayHello() {
+        console.log("hello world");
+      }
+
+      // 동기 방식 : 작업이 순차적으로 진행되고 완료되어야 다음 작업이 진행 된다.
+      sayHello();
+      console.log("end 1");
+
+      // 비동기 방식 : 작업이 순차적으로 진행되지 않고, 완료되지 않아도 다음 작업이 진행된다.
+      // setTimeout() : 비동기 함수
+      setTimeout(() => {
+        console.log("h1");
+      }, 3000);
+      console.log("end 2");
+    </script>
+  </body>
+</html>
