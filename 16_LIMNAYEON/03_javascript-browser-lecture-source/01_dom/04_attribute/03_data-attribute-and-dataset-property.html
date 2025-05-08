@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>data attribute & dataset property</h1>
+    <p>data attribute: HTML에 정의한 사용자 정의 어트리뷰트</p>
+    <p>dataset property : 자바스크립트 코드로 접근할 때의 방법</p>
+
+    <ul class="boardList">
+      <li data-board-id="13" data-category-id="1">
+        망원 맛집 추천 부탁드려요!
+      </li>
+      <li data-board-id="15" data-category-id="2">한강 러닝 크루 구해요!</li>
+      <li data-board-id="18" data-category-id="3">
+        요즘 재태크 어떻게 하시나요?
+      </li>
+    </ul>
+
+    <script>
+      const boardlist = Array.from(
+        document.querySelector(".boardList").children
+      );
+
+      boardlist.forEach((board) => console.log(board.dataset));
+
+      const board = boardlist.find((board) => board.dataset.boardId === "15");
+      console.log(board);
+      board.dataset.categoryId = "4";
+
+      board.dataset.boardWriter = "JS 사랑해";
+    </script>
+  </body>
+</html>

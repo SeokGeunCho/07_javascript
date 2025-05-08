@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>태그 이름을 이용한 요소 취득</h1>
+    <ul id="food">
+      <li>김치찌개</li>
+      <li>된장찌개</li>
+      <li>고등어구이</li>
+    </ul>
+    <ul id="drink">
+      <li>커피</li>
+      <li>콜라</li>
+      <li>우유</li>
+    </ul>
+    <script>
+      const $lists = document.getElementsByTagName("li");
+      console.log($lists);
+      console.log($lists.length);
+
+      $lists[0].style.backgroundColor = "red";
+
+      let changeColor = 0;
+      for (let i = 0; i < $lists.length; i++) {
+        $lists[i].style.backgroundColor = "rgb(130, 220, " + changeColor + ")";
+        changeColor += 50;
+      }
+
+      [...$lists].forEach((list) => (list.style.color = "white"));
+
+      const $drink = document.getElementById("drink");
+      const $listsFromDrink = $drink.getElementsByTagName("li");
+
+      console.log($listsFromDrink);
+
+      [...$listsFromDrink].forEach((list) => (list.style.color = "blue"));
+      // const test = document.querySelectorAll("li");
+      // test.forEach((list) => (list.style.color = "red"));
+      //  $lists.forEach((list) => (list.style.color = "red")); 오류가 나니깐 아래와같이 변경
+      // 방법1
+      Array.from($lists).forEach((list) => (list.style.color = "pink"));
+      // 방법2
+      [...$lists].forEach((list) => (list.style.color = "hotpink"));
+
+      const $noElem = document.getElementsByName("a");
+      console.log($noElem);
+    </script>
+  </body>
+</html>
