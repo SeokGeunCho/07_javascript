@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        background: lightgray;
+      }
+      li {
+        background: lightblue;
+      }
+
+      .div-test {
+        border: 1px solid black;
+        padding: 20px;
+      }
+      .div1 {
+        background: red;
+      }
+      .div2 {
+        background: orange;
+      }
+      .div3 {
+        background: yellow;
+      }
+      .div4 {
+        background: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>이벤트 전파</h1>
+    <ul id="drink">
+      <li>커피</li>
+      <li>콜라</li>
+      <li>우유</li>
+    </ul>
+    <script>
+      const $drink = document.getElementById("drink");
+      $drink.addEventListener("click", (e) => {
+        // ul 영역 클릭 시
+        // 2 : 타깃 단계, 타깃도 현재 타깃도 ul로 출력
+        // li 영역 클릭 시
+        // 3 : 버블링 단계(li->ul), 타깃은 li, 현재 타깃은 ul로 출력
+        console.log(e.eventPhase); // 이벤트 전파 단계
+        console.log(e.target); // 실제 클릭된 대상
+        console.log(e.currentTarget); // 이벤트가 바인딩 된 대상
+      });
+    </script>
+    <div onclick="test1('1번 div')" class="div-test div1">
+      <div onclick="test1('2번 div')" class="div-test div2">
+        <div onclick="test1('3번 div')" class="div-test div3">
+          <div onclick="test1('4번 div')" class="div-test div4"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function test1(msg, e) {
+        let event = e || window.event;
+        alert(msg);
+        if (event.stopPropagation()) {
+          event.stopPropagation();
+        }
+      }
+    </script>
+
+    <ul id="food">
+      <li>김치찌개</li>
+      <li>된장찌개</li>
+      <li>고등어구이</li>
+    </ul>
+
+    <script>
+      const $food = document.getElementById("food");
+      // 버블링 단계 캐치
+      $food.addEventListener(
+        "click",
+        (e) => {
+          console.log(e.eventPhase);
+          console.log(e.target);
+          console.log(e.currentTarget);
+        },
+        true
+      );
+      // 캡쳐링 단계 캐치
+      $food.addEventListener("click", (e) => {
+        console.log(e.eventPhase);
+        console.log(e.target);
+        console.log(e.currentTarget);
+      });
+      // ul 영역 클릭 시 타깃 단계 둘 다 캐치
+      // li 영역 클릭 시 1 캡처링 단계 -> 3 버블링 단계 캐치
+    </script>
+  </body>
+</html>

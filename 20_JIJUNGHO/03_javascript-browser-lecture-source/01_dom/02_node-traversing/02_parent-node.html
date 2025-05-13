@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>부모노드 탐색</h2>
+    <script>
+      console.log("========HTML============");
+      console.log(document.documentElement);
+      console.log("=======HEAD============");
+      console.log(document.head);
+      console.log("=======BODY========");
+      console.log(document.body);
+      console.log("=========HEAD의 parentNode =========");
+      console.log(document.head.parentNode);
+      console.log("=========BODY의 parentNode =========");
+      console.log(document.body.parentNode);
+    </script>
+
+    <ul id="lists">
+      <li class="coffee">커피</li>
+      <li class="coke">콜라</li>
+      <li class="milk">우유</li>
+    </ul>
+
+    <script>
+      const $coke = document.querySelector(".coke");
+      console.log("$coke >>>> ", $coke);
+
+      console.log($coke.parentNode);
+      console.log($coke.parentElement); // ul
+      console.log($coke.parentNode.parentNode); // body
+      console.log($coke.parentNode.parentNode.parentElement); // html
+    </script>
+  </body>
+</html>
